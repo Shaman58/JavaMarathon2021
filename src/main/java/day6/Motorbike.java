@@ -1,10 +1,10 @@
 package day6;
 
-public class MotorBike {
+public class Motorbike {
     private int year;
     private String color, model;
 
-    public MotorBike(int year, String color, String model) {
+    public Motorbike(String model, String color, int year) {
         this.year = year;
         this.color = color;
         this.model = model;
@@ -22,7 +22,7 @@ public class MotorBike {
         return model;
     }
 
-    public void info(){
+    public void info() {
         System.out.println("Это мотоцикл");
     }
 

@@ -5,7 +5,9 @@ public class Task2 {
         Airplane airplane = new Airplane("Ту 154", 1983, 48, 51);
         airplane.setYear(1984);
         airplane.setLength(49);
+        airplane.info();
         airplane.fillUp(55);
+        airplane.info();
         airplane.fillUp(43);
         airplane.info();
     }

@@ -36,10 +36,8 @@ public class Airplane {
     }
 
     public void info() {
-        System.out.printf("Изготовитель: %s, год выпуска: %d, длина: %d, вес: %d , количество топлива в баке: %d", producer, year, length, weight, fuel);
+        System.out.printf("Изготовитель: %s, год выпуска: %d, длина: %d, вес: %d, количество топлива в баке: %d\n", producer, year, length, weight, fuel);
     }
 
-    public void fillUp(int n) {
-        this.fuel +=n;
-    }
+    public void fillUp(int n) {this.fuel +=n;}
 }
