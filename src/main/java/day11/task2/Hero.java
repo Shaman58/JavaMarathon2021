@@ -2,7 +2,7 @@ package day11.task2;
 
 public abstract class Hero implements PhysAttack {
     private int health = 100;
-    private final int maxHealth = 100;
+    private final int MAXHEALTH = 100;
     private int magicDef, physDef, physAtt;
 
     public int getMagicDef() {
@@ -32,7 +32,7 @@ public abstract class Hero implements PhysAttack {
     public void setHealth(int health) {
         if (health < 0)
             this.health = 0;
-        else this.health = Math.min(health, maxHealth);
+        else this.health = Math.min(health, MAXHEALTH);
     }
 
     @Override
