@@ -8,11 +8,7 @@ public class Warrior extends Hero implements PhysAttack {
     public Warrior() {
         super.setMagicDef(this.magicDef);
         super.setPhysDef(this.physDef);
-    }
-
-    @Override
-    public void physicalAttack(Hero hero) {
-        hero.setHealth(hero.getHealth() - physAtt * (100 - hero.getPhysDef()) / 100);
+        super.setPhysAtt(this.physAtt);
     }
 
     @Override

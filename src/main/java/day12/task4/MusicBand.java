@@ -24,12 +24,8 @@ public class MusicBand {
 
 
     public static void transferMembers(MusicBand musicBand1, MusicBand musicBand2) {
-        int size = musicBand1.getMembers().size();
-        for (int i = 0; i < size; i++) {
-            System.out.println(musicBand1.getMembers().get(0));
-            musicBand2.addMember(musicBand1.getMembers().get(0));
-            musicBand1.deleteMember(musicBand1.getMembers().get(0));
-        }
+        musicBand2.members.addAll(musicBand1.members);
+        musicBand1.members.clear();
     }
 
     public void addMember(String member) {

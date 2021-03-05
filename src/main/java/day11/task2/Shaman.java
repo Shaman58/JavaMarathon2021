@@ -11,16 +11,12 @@ public class Shaman extends Hero implements PhysAttack, MagicAttack, Healer {
     public Shaman() {
         super.setMagicDef(this.magicDef);
         super.setPhysDef(this.physDef);
+        super.setPhysAtt(this.physAtt);
     }
 
     @Override
     public void magicalAttack(Hero hero) {
         hero.setHealth(hero.getHealth() - magicAtt * (100 - hero.getMagicDef()) / 100);
-    }
-
-    @Override
-    public void physicalAttack(Hero hero) {
-        hero.setHealth(hero.getHealth() - physAtt * (100 - hero.getPhysDef()) / 100);
     }
 
     @Override

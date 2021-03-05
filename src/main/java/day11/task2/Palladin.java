@@ -10,11 +10,7 @@ public class Palladin extends Hero implements PhysAttack, Healer {
     public Palladin() {
         super.setMagicDef(this.magicDef);
         super.setPhysDef(this.physDef);
-    }
-
-    @Override
-    public void physicalAttack(Hero hero) {
-        hero.setHealth(hero.getHealth() - physAtt * (100 - hero.getPhysDef()) / 100);
+        super.setPhysAtt(this.physAtt);
     }
 
     @Override
