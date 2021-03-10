@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,10 +19,9 @@ public class Task2 {
         try {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNext()) {
-                people.add(scanner.next());
-                int age = scanner.nextInt();
-                if(age < 0) throw new IOException();
-                people.set(people.size() - 1, people.get(people.size() - 1) + " " + age);
+                String[] str = scanner.nextLine().split(" ");
+                if (Integer.parseInt(str[1]) < 0) throw new IOException();
+                people.add(str[0] + " " + str[1]);
             }
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден");

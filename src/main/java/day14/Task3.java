@@ -18,10 +18,9 @@ public class Task3 {
         try {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNext()) {
-                String name = scanner.next();
-                int age = scanner.nextInt();
-                if (age < 0) throw new IOException();
-                personList.add(new Person(name, age));
+                String[] str = scanner.nextLine().split(" ");
+                if (Integer.parseInt(str[1]) < 0) throw new IOException();
+                personList.add(new Person(str[0], Integer.parseInt(str[1])));
             }
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден");
