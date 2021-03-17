@@ -1,5 +1,7 @@
 package SeaBattle;
 
+import java.util.Scanner;
+
 public class Field {
     public static final int WIDTH = 10;
     public static final int HEIGHT = 10;
@@ -30,13 +32,32 @@ public class Field {
         System.out.println("Введите расположение кораблей.");
         for (int i = 0; i < ships.length; i++) {
             if (ships[i].getRank() == 1) {
-                System.out.println("Введите координаты однопалубника. Формат ввода: x1 y1");
-                ships[i].setShip(0, 0);
-            } else{
-                System.out.printf("Введите координаты %s-палубника. Формат ввода: x1 y1 e где литера означает направление(е - восток, w - запад, n - север, s - юг)", i);
-                ships[i].setShip(5, 5, ships[i].getRank(), 'n');
+                System.out.println("Введите координаты однопалубника. Формат ввода: a1");
+                tryReadCoordinates(ships[i]);
+            } else {
+                System.out.printf("Введите координаты %s-палубника. Формат ввода: a1 e где литера означает направление(е - восток, w - запад, n - север, s - юг)", i);
             }
         }
+    }
+
+    private static void tryReadCoordinates(Ship ship) {
+        Scanner scanner = new Scanner(System.in);
+        try {
+            int[] pos = inputDecompozition(scanner.nextLine());
+            ship.setShip(pos[0], pos[1]);
+        } catch (NumberFormatException exception) {
+            System.out.println("Неправильный формат данных!");
+            tryReadCoordinates(ship);
+        }
+    }
+
+    private static int[] inputDecompozition(String input) {
+        int x, y;
+
+        x = Character.toLowerCase(input.charAt(0)) - 97;
+        y = Integer.parseInt(input.substring(1, 2)) - 1;
+
+        return new int[]{x, y};
     }
 }
 

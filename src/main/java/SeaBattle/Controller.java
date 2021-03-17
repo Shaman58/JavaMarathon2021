@@ -1,5 +1,7 @@
 package SeaBattle;
 
+import java.util.Arrays;
+
 public class Controller {
     private static Field player1Field = new Field();
     private static Field player2Field = new Field();
@@ -16,6 +18,13 @@ public class Controller {
             showLineOfField(field2, i);
             System.out.println();
         }
+
+        String s = "a1 s";
+        String[] pos =  s.split(" ");
+        int x = Character.toLowerCase(pos[0].charAt(0)) - 97;
+        int y = Integer.parseInt(pos[0].substring(1, 2)) - 1;
+
+        System.out.println(x + " " + y);
     }
 
     private static void showLineOfField(Field field, int i) {
