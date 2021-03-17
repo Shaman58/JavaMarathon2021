@@ -1,5 +1,6 @@
 package SeaBattle;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class Position {
@@ -9,6 +10,14 @@ public class Position {
     public Position(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 
     @Override
