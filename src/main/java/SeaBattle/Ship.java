@@ -25,52 +25,57 @@ public class Ship {
         return positions;
     }
 
-    public void setShip(int x, int y) {
+    public boolean setShip(int x, int y) {
         positions[0] = new Position(x, y);
+        return true;
     }
 
-    public boolean setShip(int x, int y, int rank, char direction) {
+    public boolean setShip(int y, int x, int rank, char direction) {
         switch (direction) {
             case 'n':                                  //нужно как то вынести повторяющийся код в отдельный метод
-                if ((y - rank) < 1)
+                if ((x - rank) < 1) {
                     errorMessage();
-                else {
-                    positions = new Position[rank];
-                    for (int i = 0; i < rank; i++)
-                        positions[i] = new Position(x, y - i);
-                }
-                fillShipArea();
-                return true;
-            case 's':
-                if ((y + rank) > Field.HEIGHT)
-                    errorMessage();
-                else {
-                    positions = new Position[rank];
-                    for (int i = 0; i < rank; i++)
-                        positions[i] = new Position(x, y + i);
-                }
-                fillShipArea();
-                return true;
-            case 'w':
-                if ((x - rank) < 1)
-                    errorMessage();
-                else {
+                    return false;
+                } else {
                     positions = new Position[rank];
                     for (int i = 0; i < rank; i++)
                         positions[i] = new Position(x - i, y);
+                    fillShipArea();
+                    return true;
                 }
-                fillShipArea();
-                return true;
-            case 'e':
-                if ((x + rank) > Field.WIDTH)
+            case 's':
+                if ((x + rank) > Field.HEIGHT) {
                     errorMessage();
-                else {
+                    return false;
+                } else {
                     positions = new Position[rank];
                     for (int i = 0; i < rank; i++)
                         positions[i] = new Position(x + i, y);
+                    fillShipArea();
+                    return true;
                 }
-                fillShipArea();
-                return true;
+            case 'w':
+                if ((y - rank) < 1) {
+                    errorMessage();
+                    return false;
+                } else {
+                    positions = new Position[rank];
+                    for (int i = 0; i < rank; i++)
+                        positions[i] = new Position(x, y - i);
+                    fillShipArea();
+                    return true;
+                }
+            case 'e':
+                if ((y + rank) > Field.WIDTH) {
+                    errorMessage();
+                    return false;
+                } else {
+                    positions = new Position[rank];
+                    for (int i = 0; i < rank; i++)
+                        positions[i] = new Position(x, y + i);
+                    fillShipArea();
+                    return true;
+                }
             default:
                 System.out.println("Ошибка ввода!!! Напрвление не распознано. Повторите!");
                 return false;
