@@ -1,6 +1,5 @@
 package SeaBattle;
 
-import java.io.IOException;
 import java.util.Objects;
 
 public class Position {
@@ -31,5 +30,13 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(x, y);
+    }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }

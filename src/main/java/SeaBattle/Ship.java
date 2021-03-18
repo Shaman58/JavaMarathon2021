@@ -6,18 +6,26 @@ import java.util.Set;
 public class Ship {
     private int rank;
     private Position[] positions;
-    Set<Position> shipArea;
+    private Set<Position> shipArea;
 
     public Ship(int rank) {
         this.rank = rank;
+        positions = new Position[rank];
+    }
+
+    public Set<Position> getShipArea() {
+        return shipArea;
     }
 
     public int getRank() {
         return rank;
     }
 
+    public Position[] getPositions() {
+        return positions;
+    }
+
     public void setShip(int x, int y) {
-        positions = new Position[1];
         positions[0] = new Position(x, y);
     }
 
@@ -83,5 +91,12 @@ public class Ship {
 
     private static void errorMessage() {
         System.out.println("Ошибка ввода!!! Корабль не умещатся на поле. Повторите!");
+    }
+
+    @Override
+    public String toString() {
+        return "Ship{" +
+                "rank=" + rank +
+                '}';
     }
 }
