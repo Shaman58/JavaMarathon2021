@@ -25,8 +25,17 @@ public class Ship {
         return positions;
     }
 
+    public void setPositions(Position[] positions) {
+        this.positions = positions;
+    }
+
+    public void setShipArea(Set<Position> shipArea) {
+        this.shipArea = shipArea;
+    }
+
     public boolean setShip(int x, int y) {
         positions[0] = new Position(x, y);
+        fillShipArea();
         return true;
     }
 
