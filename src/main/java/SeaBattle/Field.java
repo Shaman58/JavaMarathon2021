@@ -7,15 +7,15 @@ public class Field {
     public static final int HEIGHT = 10;
     private Ship[] ships = {
             new Ship(1),
-            new Ship(1)
-//            new Ship(1),
-//            new Ship(1),
-//            new Ship(2),
-//            new Ship(2),
-//            new Ship(2),
-//            new Ship(3),
-//            new Ship(3),
-//            new Ship(4)
+            new Ship(1),
+            new Ship(1),
+            new Ship(1),
+            new Ship(2),
+            new Ship(2),
+            new Ship(2),
+            new Ship(3),
+            new Ship(3),
+            new Ship(4)
     };
     private List<Position> enemyShots = new ArrayList<>();
     private String name;
@@ -23,7 +23,7 @@ public class Field {
 
     public Field(String name) {
         this.name = name;
-        this.hitPoint = 2;
+        this.hitPoint = 20;
     }
 
     public Ship[] getShips() {
@@ -53,12 +53,11 @@ public class Field {
             if (ships[i].getRank() == 1) {
                 System.out.println("Введите координаты однопалубника. Формат ввода: a1");
                 tryReadCoordinates(ships[i]);
-                showFields(this, field);
             } else {
                 System.out.printf("Введите координаты %sх-палубника. Формат ввода: a1 e где литера означает направление(е - восток, w - запад, n - север, s - юг)%n", ships[i].getRank());
                 tryReadCoordinates(ships[i], ships[i].getRank());
-                showFields(this, field);
             }
+            showFields(this, field);
         }
         System.out.printf("Ввод кораблей для %s завершен%n", name);
     }
@@ -161,10 +160,10 @@ public class Field {
         String out = "[ ]";
         for (int j = 0; j < Field.HEIGHT; j++) {
             Position checkPos = new Position(i, j);
-            if (field1.getEnemyShots().contains(checkPos)){
+            if (field1.getEnemyShots().contains(checkPos)) {
                 out = "[•]";
-                for (Ship ship : field1.getShips()){
-                    if(Arrays.asList(ship.getPositions()).contains(checkPos)) {
+                for (Ship ship : field1.getShips()) {
+                    if (Arrays.asList(ship.getPositions()).contains(checkPos)) {
                         out = "[X]";
                         break;
                     }

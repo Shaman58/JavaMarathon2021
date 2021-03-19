@@ -5,10 +5,12 @@ import java.util.Objects;
 public class Position {
     private int x;
     private int y;
+    private boolean isFired;
 
     public Position(int x, int y) {
         this.x = x;
         this.y = y;
+        this.isFired = false;
     }
 
     public int getX() {
@@ -17,6 +19,14 @@ public class Position {
 
     public int getY() {
         return y;
+    }
+
+    public boolean isFired() {
+        return isFired;
+    }
+
+    public void setFired() {
+        isFired = true;
     }
 
     @Override

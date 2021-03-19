@@ -13,6 +13,7 @@ public class Ship {
         positions = new Position[rank];
     }
 
+
     public Set<Position> getShipArea() {
         return shipArea;
     }
@@ -37,6 +38,12 @@ public class Ship {
         positions[0] = new Position(x, y);
         fillShipArea();
         return true;
+    }
+
+    public boolean checkAlive() {
+        for (Position position : positions)
+            if (!position.isFired()) return true;
+        return false;
     }
 
     public boolean setShip(int y, int x, int rank, char direction) {
