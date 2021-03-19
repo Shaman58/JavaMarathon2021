@@ -48,6 +48,7 @@ public class Field {
 
     public void createPlayerField(Field field) {
         System.out.printf("%s ведите расположение кораблей.Второй игрок - отвернись! %n", name);
+        showShipTypesCounter(this);
         showFields(this, field);
         for (int i = 0; i < ships.length; i++) {
             if (ships[i].getRank() == 1) {
@@ -57,6 +58,7 @@ public class Field {
                 System.out.printf("Введите координаты %sх-палубника. Формат ввода: a1 e где литера означает направление(е - восток, w - запад, n - север, s - юг)%n", ships[i].getRank());
                 tryReadCoordinates(ships[i], ships[i].getRank());
             }
+            showShipTypesCounter(this);
             showFields(this, field);
         }
         System.out.printf("Ввод кораблей для %s завершен%n", name);
@@ -172,5 +174,27 @@ public class Field {
             System.out.print(out);
             out = "[ ]";
         }
+    }
+
+    private void showShipTypesCounter(Field field) {
+        int oneDeckCount = 0, twoDeckCount = 0, threeDeckCount = 0, fourDeckCount = 0;
+        for (Ship ship : field.getShips()) {
+            if (ship.getPositions()[0] == null)
+                switch (ship.getRank()) {
+                    case 1:
+                        oneDeckCount++;
+                        break;
+                    case 2:
+                        twoDeckCount++;
+                        break;
+                    case 3:
+                        threeDeckCount++;
+                        break;
+                    case 4:
+                        fourDeckCount++;
+                        break;
+                }
+        }
+        System.out.printf("Осталось расставить: [ ] - %d шт  [ ][ ] - %d шт   [ ][ ][ ] - %d шт  [ ][ ][ ][ ] - %d шт%n", oneDeckCount, twoDeckCount, threeDeckCount, fourDeckCount);
     }
 }
